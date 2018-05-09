@@ -7,7 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 public class BFragment extends BaseFragment {
+    @Inject
+    public BFragment() {
+    }
 
     @Nullable
     @Override

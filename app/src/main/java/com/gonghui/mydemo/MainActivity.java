@@ -13,14 +13,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
+
+    @Inject
+    AFragment aFragment;
+
+    @Inject
+    BFragment bFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DaggerActivityFactory.create().inject(this);
+
         TextView tv = findViewById(R.id.tv);
         MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
         model.getUsers().observe(this, users -> {
@@ -36,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public BaseFragment getItem(int position) {
-                return position == 0 ? new AFragment() : new BFragment();
+                return position == 0 ? aFragment : bFragment;
             }
 
             @Override

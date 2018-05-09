@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="@dimen/dp30"
-        android:layout_height="@dimen/dp30"
+        android:layout_width="@dimen/dp60"
+        android:layout_height="@dimen/dp60"
         android:background="#08ff86"
         android:text="TextView" />
 </LinearLayout>
